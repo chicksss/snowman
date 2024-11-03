@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Snowman</title>
+    <style>
+        body {
+            background-color: #87CEEB; /* Light blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: "DynaPuff", system-ui;
+        }
+
+        .snowman {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .circle {
+            background-color: white;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+        }
+        .bottom {
+            width: 150px;
+            height: 150px;
+        }
+        .middle {
+            width: 100px;
+            height: 100px;
+            margin-top: -15px;
+        }
+        .top {
+            width: 70px;
+            height: 70px;
+            margin-top: -10px;
+        }
+        .eyes {
+            display: flex;
+            justify-content: space-between;
+            width: 30px;
+            margin-top: 15px;
+        }
+        .eye {
+            width: 8px;
+            height: 8px;
+            background-color: black;
+            border-radius: 50%;
+        }
+        .nose {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid orange;
+            margin-top: 5px;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .button {
+            width: 8px;
+            height: 8px;
+            background-color: black;
+            border-radius: 50%;
+        }
+        .name{
+            color:white;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+
+    </style>
+</head>
+
+<script>
+    // Create snowflakes
+    function createSnowflakes() {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.textContent = '❄';
+        snowflake.style.left = Math.random() * 100 + 'vw';
+        snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+        snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+        document.body.appendChild(snowflake);
+
+        // Remove snowflakes after falling
+        setTimeout(() => {
+            snowflake.remove();
+        }, 5000);
+    }
+
+    // Generate snowflakes every 300 milliseconds
+    setInterval(createSnowflakes, 300);
+</script>
+<body>
+    <div class="snowman">
+        <div>
+            <h1 class="name">BRAHLY</h1>
+        </div>
+        <div class="circle top">
+            <div class="eyes">
+                <div class="eye"></div>
+                <div class="eye"></div>
+            </div>
+            <div class="nose"></div>
+        </div>
+        <div class="circle middle">
+            <div class="buttons">
+                <div class="button"></div>
+                <div class="button"></div>
+            </div>
+        </div>
+        <!-- <div class="circle bottom"></div> -->
+    </div>
+</body>
+</html>
